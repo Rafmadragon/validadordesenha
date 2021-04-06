@@ -17,7 +17,7 @@ public class SenhaController {
 	private SenhaService senhaService;
 	
 	@GetMapping("/validarSenha")
-	public boolean senha(@RequestParam(value="senha") String senha) throws Exception {
+	private boolean senha(@RequestParam(value="senha") String senha) throws Exception {
 			return senhaService.isValid(senha);
 	
 	}
