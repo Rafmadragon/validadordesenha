@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SenhaService {
-	private static final String REGEX = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@#!%^&*)(-+])(?=.*[0-9a-zA-Z])[0-9a-zA-Z$@#!%^&*)(-+]{9,}$";
+	private static final String REGEX = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@#!%^&*)(+-])(?=.*[0-9a-zA-Z])[0-9a-zA-Z$@#!%^&*)(+-]{9,}$";
 	private static final Logger logger = LoggerFactory.getLogger(SenhaService.class);
 
 	public boolean isValid(String senha) throws Exception{
