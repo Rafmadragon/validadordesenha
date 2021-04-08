@@ -26,6 +26,7 @@ import com.example.projetoitisenha.service.PasswordService;
 @RestController
 @RequestMapping("/validationPassword")
 public class PasswordController {
+	
 	@Autowired
 	private PasswordService passwordService;
 	
@@ -35,12 +36,10 @@ public class PasswordController {
 	@GetMapping
 	private boolean validation(@RequestParam(value = "password") String password) throws Exception {
 			return this.passwordService.isValid(password);
-	
 	}
 	@GetMapping("/{password}")
 	private boolean validationByName(@PathVariable String password) throws Exception {
 			return this.passwordService.isValid(password);
-	
 	}
 	
 	@GetMapping("/password")
