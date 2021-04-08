@@ -44,8 +44,9 @@ public class PasswordJavaApiUnitTests {
 		 passwordList.add("(3wE9!fhk");
 		 passwordList.add(")3wE9!fhk");
 		 passwordList.add("+3wE9!fhk");
+		 passwordList.add("&3wE9!fhk");
 		 
-		 boolean []booleansList = {true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true};
+		 boolean []booleansList = {true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true};
 		 
 		 for(int i = 0; i<passwordList.size(); i++) {
 			 assertEquals(passwordService.isValid(passwordList.get(i)),booleansList[i]);

@@ -4,7 +4,6 @@ import java.util.regex.Pattern;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.projetoitisenha.service.PasswordService;
@@ -18,7 +17,7 @@ public class PasswordServiceImpl implements PasswordService{
 	
 	@Override
 	public Boolean isValid(String password) {
-		LOGGER.info("Validando padrão da senha.");
+		LOGGER.info("Validando padrão da senha.");		
 		Pattern pattern = Pattern.compile(REGEX);
 		if(!password.isEmpty() && password != null && pattern.matcher(password).matches()) {
 			this.brokenPassword = password.toUpperCase().split("");
@@ -38,6 +37,7 @@ public class PasswordServiceImpl implements PasswordService{
 		} 
 		return false;
 	}
+	
 	
 }
 	
