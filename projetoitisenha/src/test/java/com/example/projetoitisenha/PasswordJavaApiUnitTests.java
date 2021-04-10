@@ -53,7 +53,7 @@ public class PasswordJavaApiUnitTests {
 		 }
 	 }
 	 @Test
-	 public void validarSenhaSemSucessoGET() throws Exception{
+	 public void validarSenhaSemSucesso() throws Exception{
 		 List<String> passwordList = new ArrayList<String>();
 		 passwordList.add("");
 		 passwordList.add("aa");
@@ -73,7 +73,7 @@ public class PasswordJavaApiUnitTests {
 	 }
 	 
 	 @Test
-	 public void validarNegacaoValidadorDeSenhaGET() throws Exception{
+	 public void validarNegacaoDeSenhas() throws Exception{
 		 List<String> passwordList = new ArrayList<String>();
 		 passwordList.add("");
 		 passwordList.add("aa");
