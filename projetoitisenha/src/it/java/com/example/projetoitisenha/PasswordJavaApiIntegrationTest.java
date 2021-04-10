@@ -17,17 +17,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.example.projetoitisenha.entity.PasswordEntity;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 
 
 
@@ -37,13 +33,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class PasswordJavaApiIntegrationTest {
 	
+	private PasswordEntity passwordEntity;
+	
 	@LocalServerPort
     private int port;
 	
 	@Autowired
 	private MockMvc mvc;
 
-	
 	@Test
 	@Order(1)
 	public void contextLoad() {
@@ -121,9 +118,10 @@ public class PasswordJavaApiIntegrationTest {
 		
 	}
 	
+	@SuppressWarnings("unlikely-arg-type")
 	@Test
 	@Order(4)
-	public void testReturnCreatePasswordSucessPOST() throws Exception {
+	public void testClassPasswordControllerCRUDComplete() throws Exception {
 		List<String> passwordList = new ArrayList<String>();
 		 passwordList.add("AbTp9!fok"); 
 		 passwordList.add("AbT*9!fo%");
@@ -146,24 +144,56 @@ public class PasswordJavaApiIntegrationTest {
 		 passwordList.add("#3wE9!fhk");
 		 
 		long id= 1;
-		PasswordEntity obj = new PasswordEntity();
+		this.passwordEntity = new PasswordEntity();
 		for(String password :  passwordList) {
-			obj.setId(id);
-			obj.setPassword(password);
+			passwordEntity.setId(id);
+			passwordEntity.setPassword(password);
 			
 			this.mvc.perform(post("/validationPassword/password")
 					.contentType(MediaType.APPLICATION_JSON_VALUE)
-	        		.content(asJsonString(obj)))
+	        		.content(asJsonString(passwordEntity)))
 			.andExpect(status().isCreated());
 			
 			id++;
 		}
+		id = 4;
+		this.passwordEntity.setId(id);
+		this.passwordEntity.setPassword("#3wE9!fhk");
+		PasswordEntity passwordEntitycomparation = this.passwordEntity;
+		this.mvc.perform(post("/validationPassword/password")
+				.contentType(MediaType.APPLICATION_JSON_VALUE)
+      		.content(asJsonString(passwordEntity)))
+		.andExpect(status().isConflict()).andReturn().equals(passwordEntitycomparation);
+		
+		id = 4;
+		this.passwordEntity.setId(id);
+		this.passwordEntity.setPassword("#3wE9!fhk");
+		passwordEntitycomparation = this.passwordEntity;
+		this.mvc.perform(put("/validationPassword/password/v1/"+id)
+				.contentType(MediaType.APPLICATION_JSON_VALUE)
+      		.content(asJsonString(passwordEntity)))
+		.andExpect(status().isCreated()).andReturn().equals(passwordEntitycomparation);
+		
+		this.mvc.perform(get("/validationPassword/password/"+4)).andExpect(status().isOk()).andReturn().equals(passwordEntitycomparation);		
+		
+		id = 5;
+		this.passwordEntity.setId(id);
+		this.passwordEntity.setPassword("#3wE9!fhk");
+		passwordEntitycomparation = this.passwordEntity;
+		this.mvc.perform(put("/validationPassword/password/v1/"+1)
+				.contentType(MediaType.APPLICATION_JSON_VALUE)
+      		.content(asJsonString(passwordEntity)))
+		.andExpect(status().isNotAcceptable()).andReturn().equals(passwordEntitycomparation);
+		
+		this.mvc.perform(delete("/validationPassword/password/"+1)).andExpect(status().isAccepted());
+		
 		this.mvc.perform(delete("/validationPassword/password")).andExpect(status().isAccepted());
+		
 	}
 	
 	@Test
 	@Order(5)
-	public void testReturnCreatePasswordStatusNotAceeptablePOST() throws Exception {
+	public void testReturnPasswordStatusNotAceeptablePOST() throws Exception {
 		List<String> passwordList = new ArrayList<String>();
 		 passwordList.add("");
 		 passwordList.add("aa");
@@ -177,40 +207,65 @@ public class PasswordJavaApiIntegrationTest {
 		 passwordList.add("1234567890");
 		 
 		long id= 1;
-		PasswordEntity obj = new PasswordEntity();
+		PasswordEntity passwordEntity = new PasswordEntity();
 		for(String password :  passwordList) {
-			obj.setId(id);
-			obj.setPassword(password);
+			passwordEntity.setId(id);
+			passwordEntity.setPassword(password);
 			
 			this.mvc.perform(post("/validationPassword/password")
 					.contentType(MediaType.APPLICATION_JSON_VALUE)
-	        		.content(asJsonString(obj)))
+	        		.content(asJsonString(passwordEntity)))
 			.andExpect(status().isNotAcceptable());
 			
 			id++;
 		}
 		
 	}
+	
 	@Test
 	@Order(6)
-	public void testReturnCreatePasswordStatusCreatedPUT() throws Exception {
-		long id= 1;
+	public void testReturnPasswordGETNotFound() throws Exception {
+		this.mvc.perform(get("/validationPassword/password/1")).andExpect(status().isNotFound());	
+		
+	}
+	
+	@Test
+	@Order(7)
+	public void testReturnPasswordPUTNotFound() throws Exception {
 		PasswordEntity obj = new PasswordEntity();
-
+		long id = 1;
 		obj.setId(id);
 		obj.setPassword("#3wE9!fhk");
 		
-		this.mvc.perform(post("/validationPassword/password")
-				.contentType(MediaType.APPLICATION_JSON_VALUE)
-        		.content(asJsonString(obj)))
-		.andExpect(status().isCreated());
-
 		this.mvc.perform(put("/validationPassword/password/v1/"+id)
 				.contentType(MediaType.APPLICATION_JSON_VALUE)
         		.content(asJsonString(obj)))
-		.andExpect(status().isCreated());
+		.andExpect(status().isNotFound());
 		
 	}
+	@Test
+	@Order(8)
+	public void testReturnPasswordDeleteNotFound() throws Exception {
+		PasswordEntity passwordEntity = new PasswordEntity();
+		long id = 1;
+		passwordEntity.setId(id);
+		passwordEntity.setPassword("#3wE9!fhk");
+		
+		this.mvc.perform(delete("/validationPassword/password/1")).andExpect(status().isNotFound());
+		
+	}
+	@Test
+	@Order(9)
+	public void testReturnPasswordDeleteAllNotFound() throws Exception {
+		PasswordEntity passwordEntity = new PasswordEntity();
+		long id = 1;
+		passwordEntity.setId(id);
+		passwordEntity.setPassword("#3wE9!fhk");
+		
+		this.mvc.perform(delete("/validationPassword/password")).andExpect(status().isNotFound());
+		
+	}
+	
 	public static String asJsonString(final Object obj) {
 	    try {
 	        return new ObjectMapper().writeValueAsString(obj);

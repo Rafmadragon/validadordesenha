@@ -69,10 +69,6 @@ public class PasswordController {
     public ResponseEntity<PasswordEntity> Post(@Valid @RequestBody PasswordEntity passwordEntity)
     {	
 		Optional<PasswordEntity> passwordValidation= this.passwordRepository.findById(passwordEntity.getId());
-		if(passwordValidation.isPresent()) {
-			PasswordEntity passwordOld = passwordValidation.get();
-			logger.info("id:"+passwordOld.getId()+":"+passwordEntity.getId());
-		}
         if(passwordValidation.isPresent() != true){
 			passwordEntity.setIsValidPassword(this.passwordService.isValid(passwordEntity.getPassword()));
 			if(passwordEntity.isValidPassword()) {
@@ -98,8 +94,7 @@ public class PasswordController {
                 return new ResponseEntity<PasswordEntity>(passwordEntity, HttpStatus.CREATED);
         	}
         	else
-        		return new ResponseEntity<>(newPasswordEntity,HttpStatus.NOT_ACCEPTABLE);
-        	
+        		return new ResponseEntity<>(newPasswordEntity,HttpStatus.NOT_ACCEPTABLE);        	
         }
         else
             return new ResponseEntity<>(newPasswordEntity,HttpStatus.NOT_FOUND);
