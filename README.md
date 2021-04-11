@@ -98,8 +98,3 @@ Ou
 $ mvn test
 ```
 >**_NOTA_**  -Valide se o build sucess apareceu após terminar os processo.
-
-
-
-
-![image](https://user-images.githubusercontent.com/49215188/114322701-00bec000-9af8-11eb-892b-83c9e6693e7e.png)
