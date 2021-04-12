@@ -136,8 +136,9 @@ $ mvn spring-boot:run
 ### Liberar porta 8585:<a name="Liberarporta8585"></a>
 Consultar portas que estão sendo utilizadas.
 ```
-$ netstat -a -n –o
+$ NETSTAT -a -n –o
 ```
+
 >**_NOTA_**  -Ira aparecer essas colunas (Proto,  Endereço local ,        Endereço externo ,      Estado  ,         PID), olhar a de endereço local e PID.
 
 Olhar a lista de portas que estão ativas e verifique se a 8585 (na coluna endereço local) está sendo usada, se estiver aparecendo pegue o numero do PID dela e execute o comando 
