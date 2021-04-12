@@ -5,7 +5,7 @@
 
 **Data:** 10/04/2020
 
-Descrição do desafio:<a name="DescricaoDesafio"></a>
+## Descrição do desafio:<a name="DescricaoDesafio"></a>
 
 
 Considere uma senha sendo válida quando a mesma possuir as seguintes definições:
