@@ -1,20 +1,14 @@
 # validadordesenha
 Projeto validar senha (desafio)
 
-Tabela de conteúdos
+Indíce
 =================
 <!--ts-->
    * [Intruções básicas de como executar o projeto validadordesenha](#intrucoes-basicas-de-como-executar-o-projeto-validadordesenha)
-   * [Tabela de Conteudo](#tabela-de-conteudo)
-   * [Instalação](#instalacao)
-   * [Como usar](#como-usar)
-      * [Pre Requisitos](#pre-requisitos)
-      * [Local files](#local-files)
-      * [Remote files](#remote-files)
-      * [Multiple files](#multiple-files)
-      * [Combo](#combo)
-   * [Tests](#testes)
-   * [Tecnologias](#tecnologias)
+   * [Execução via postman e status de retornos da API](#execucao-via-postman-e-status-de-retornos-da-API)
+   * [Problemas encontrados no projeto e soluções desenvolvidas](#problemas-encontrados-no-projeto-e-soluções-desenvolvidas)
+   	* [1ª Etapa](#primeira-etapa)
+   * [Conclusão](#conclusao)
 <!--te-->
 
 # Intruções básicas de como executar o projeto validadordesenha<a name="intrucoes-basicas-de-como-executar-o-projeto-validadordesenha"></a>
@@ -115,7 +109,7 @@ $ mvn test
 ```
 >**_NOTA_**  -Valide se o build sucess apareceu após terminar os processo.
 
-# Execução via postman e status de retornos da API 
+# Execução via postman e status de retornos da API <a name="execucao-via-postman-e-status-de-retornos-da-API"></a>
 ## Execução de testes pelo Postman ou pela URL para api de validação de senha.
 
 >**_NOTA_** Pre-condições :
@@ -293,14 +287,14 @@ GET - http://localhost:8585/validationPassword/password
 ]
 ````
 
-# Problemas encontrados no projeto e soluções desenvolvidas
+# Problemas encontrados no projeto e soluções desenvolvidas<a name="problemas-encontrados-no-projeto-e-soluções-desenvolvidas"></a>
 
 >**_CRITERIOS_** Detalhes sobre a solução, gostaríamos de saber qual foi o seu racional nas decisões;
 
 ## Etapas do Projeto:
 >**_Nota_** O projeto está dividido em duas etapas de descisão.
 
-### 1ª Etapa:
+### 1ª Etapa:<a name="primeira-etapa"></a>
 
 A primeira era simples só construir uma api que recebe uma String e retorna um boolean, estava fazendo pelo método de requisição GET.
 
@@ -1008,5 +1002,5 @@ public class PasswordJavaApiIntegrationTest {
 	
 }
  ```
-# Conclusão
+# Conclusão<a name="conclusao"></a>
 * Foi um desafio interessante criar uma aplicação que exponha uma API WEB para validar uma senha em 7 dias com os padrões e os requisitos solicitados.
