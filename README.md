@@ -99,6 +99,183 @@ $ mvn test
 ```
 >**_NOTA_**  -Valide se o build sucess apareceu após terminar os processo.
 
+# Execução via postman e status de retornos da API 
+## Execução de testes pelo Postman ou pela URL para api de validação de senha.
+
+>**_NOTA_** Pre-condições :
+	- Aplicação do spring-boot iniciado conforme o manual de inicialização do projeto.
+
+
+## URLS e seus métodos de requisições WEB RESTFull
+>**_OBSERVAÇÃO_** Valida senha conforme digitado(esses dois métodos não recomendo pois dessa forma só validam alguns casos de senha da api,
+os que estão no corpo do desafio passaram normal, mas quando insere outros caracteres especiais  podem falhar ou dar Bad request, informações validadas na  rfc-3986 e rfc-11738(URLs) e rfc-2396(URIs))
+
+* Retorno esperado para ser validado no desafio
+````Java
+IsValid("") // false  
+IsValid("aa") // false  
+IsValid("ab") // false  
+IsValid("AAAbbbCc") // false  
+IsValid("AbTp9!foo") // false  
+IsValid("AbTp9!foA") // false
+IsValid("AbTp9 fok") // false
+IsValid("AbTp9!fok") // true
+`````
+GET - http://localhost:8585/validationPassword/digitarSenhaParaSerValidada
+
+GET - http://localhost:8585/validationPassword?password=digitarSenhaParaSerValidada
+
+
+>**_OBSERVAÇÃO_** Metodos de requisições abaixo são os mais corretos para a validação de senha
+
+Valida e cadastra senha na api no banco de dados H2(banco de dados temporário , criado na memoria volátil do computador)
+
+POST- http://localhost:8585/validationPassword/password/
+
+**Headers:**
+
+Content-Type: application/json
+
+Accept: application/json
+
+Colocar a senha no campo de valor da variavél password
+
+**Body :**
+````
+{    
+    "id":1,
+    "password":"&9w#i!FokR"
+}
+````
+Status para esse método:
+
+ - 201- Created -  quando api valida a senha e se estiver no padrão solicitado ela é cadastrada na base de dados
+
+ - 406- Not Aceeptable – Quando a api valida a senha e ela não está de acordo com o solicitado
+
+ - 409 – Conflict – caso o usuário tente digitar um id que já está cadastrado na base 
+
+Response sucess – usuário senha está de acordo e usuário foi cadastrado com sucesso:
+````
+{
+    "id": 1,
+    "password": "&9w#i!FokR",
+    "validPassword": true
+}
+
+````
+
+Response false -  usuário não consegue cadastrar a senha pois ela não está de acordo com o padrão:
+````
+{
+    "id": 1,
+    "password": "&9w#i!FokR",
+    "validPassword": false
+}
+````
+Atualiza senha cadastrada na base pelo id(aceita números naturais) e valida se a senha do usuário está de acordo com o requisito
+
+PUT- http://localhost:8585/validationPassword/password/v1/{id}
+
+**Headers:**
+
+Content-Type: application/json
+
+Accept: application/json
+
+**Body :**
+````
+{    
+    "id":{id},
+    "password":"&9w#i!FokR"
+}
+````
+
+Status para esse metodo:
+
+ - 201 – Created – Caso a senha está de acordo com o padrão e foi cadastrada na base
+
+ - 406 – Not_Acceptable -  caso o usuário pesquisou um id da Uri que não corresponde com o campo de id do body do request
+
+ - 404 – Not Found – caso o usuário esteja tentando atualizar os dados de um id que não existe na base de dados
+
+Response sucess – usuário senha está de acordo e usuário foi atualizada com sucesso:
+````
+{
+    "id": 1,
+    "password": "&9w#i!FokR",
+    "validPassword": true
+}
+````
+
+Response false -  usuário não consegue atualizar a senha pois ela não está de acordo com o padrão:
+````
+{
+    "id": 1,
+    "password": "&9w#i!FokR",
+    "validPassword": false
+}
+````
+
+Deleta senha cadastrada de acordo com o id passado na Uri , no caso o id(aceita números naturais)
+
+DELETE- http://localhost:8585/validationPassword/password/{id}
+
+Status para esse método 
+
+ - 202 – Accepted - senha com o id passado na uri encontrado e deletado com sucesso
+
+ - 404 -  Not found – não foi encontrado o id 
+
+Deleta todos as senhas cadastradas na base serial o deletar tudo
+
+DELETE - http://localhost:8585/validationPassword/password
+
+ - 202 – Accepted – verifica se a base está está com alguma senha cadastrada e exclui todas elas
+ - 
+ - 404 -  Not found – não foi encontrando nenhum valor cadastrado na base 
+
+Consulta senha cadastrada de acordo com o id passado na Uri , no caso o id(aceita números naturais)
+
+GET http://localhost:8585/validationPassword/password/{id}
+
+Status para esse método 
+
+  - 200 – OK - senha com o id passado na uri encontrado e retornado no response
+
+  - 404 -  Not found – não foi encontrado o id 
+ 
+ Response sucess – usuario encontrado pelo id e retorna seu objeto JSON:
+````
+{
+    "id": 1,
+    "password": "&9w#i!FokR",
+    "validPassword": true
+}
+````
+
+Retorna uma lista com todas as senhas cadastradas
+
+GET - http://localhost:8585/validationPassword/password
+
+  - 200 – OK – exibe uma lista com todas as senhas cadastradas
+
+ 
+ Response sucess – retorna uma lista de usuarios cadastrados:
+````
+[
+	{
+	    "id": 1,
+	    "password": "&9w#i!FokR",
+	    "validPassword": true
+	},
+	{
+	    "id": 1,
+	    "password": "&9w#i!FokR",
+	    "validPassword": true
+	}
+]
+````
 
 # Problemas encontrados no projeto e soluções desenvolvidas
 
