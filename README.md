@@ -5,6 +5,37 @@
 
 **Data conclusão:** 10/04/2020
 
+Indíce
+=================
+<!--ts-->
+   * [Descrição do desafio:](#DescricaoDesafio)
+   * [Intruções básicas de como executar o projeto validadordesenha](#intrucoes-basicas-de-como-executar-o-projeto-validadordesenha)
+   		* [Programas que precisam estar instalados para rodar o projeto:](#Programasqueprecisamestarinstaladospararodaroprojeto)
+   		* [Baixar Projeto validadordesenha no git:](#BaixarProjetovalidadordesenhanogit)
+   		* [Executar Projeto Spring-boot](#ExecutarProjetoSpringboot)
+			* [Iniciar aplicação WEB:](#IniciaraplicacaoWEB)
+			* [Liberar porta 8585:](#Liberarporta8585)
+			* [Finalizar projeto spring-boot no terminal:](#Finalizarprojetospringbootnoterminal)
+   * [Execução via postman e status de retornos da API](#execucao-via-postman-e-status-de-retornos-da-API)
+		* [URLS e seus métodos de requisições WEB RESTFull](#URLSeseusmetodosderequisicoesWEBRESTFull)
+   * [Problemas encontrados no projeto e soluções desenvolvidas](#problemas-encontrados-no-projeto-e-soluções-desenvolvidas)
+		* [1ª Etapa](#primeira-etapa)
+			*  [Problema 1:](#Problema1)
+			*  [Solução Problema 1:](#SolucaoProblema1)
+			*  [Problema 2:](#Problema2)
+			*  [Solução 2:](#Solucao2)
+		* [2ª Etapa](#segunda-etapa)
+			* [Problema:](#Problemas)
+			* [Solução:](#Solucao)
+				* [Estrutura do Projeto e comunicação das classes:](#EstruturadoProjetocomunicacaodasclasses)
+				* [Frameworks utilizados na aplicação Spring-boot WEB:](#FrameworksutilizadosnaaplicacaoSpringbootWEB)
+				* [Configuração do application.properties](#Configuracaodoapplicationproperties)
+				* [Como ficou as classes do projeto:](#Comoficouasclassesdoprojet)
+				* [Classes de testes unitários e integrados:](#Classesdetestesunitarioseintegrados)
+
+   * [Conclusão](#conclusao)
+<!--te-->
+
 ## Descrição do desafio:<a name="DescricaoDesafio"></a>
 
 
@@ -42,36 +73,7 @@ Output: Um boolean indicando se a senha é válida.
 
 Embora nossas aplicações sejam escritas em Kotlin e C# (.net core), você não precisa escrever sua solução usando elas. Use a linguagem de programação que considera ter mais conhecimento.
 
-Indíce
-=================
-<!--ts-->
-   * [Descrição do desafio:](#DescricaoDesafio)
-   * [Intruções básicas de como executar o projeto validadordesenha](#intrucoes-basicas-de-como-executar-o-projeto-validadordesenha)
-   		* [Programas que precisam estar instalados para rodar o projeto:](#Programasqueprecisamestarinstaladospararodaroprojeto)
-   		* [Baixar Projeto validadordesenha no git:](#BaixarProjetovalidadordesenhanogit)
-   		* [Executar Projeto Spring-boot](#ExecutarProjetoSpringboot)
-			* [Iniciar aplicação WEB:](#IniciaraplicacaoWEB)
-			* [Liberar porta 8585:](#Liberarporta8585)
-			* [Finalizar projeto spring-boot no terminal:](#Finalizarprojetospringbootnoterminal)
-   * [Execução via postman e status de retornos da API](#execucao-via-postman-e-status-de-retornos-da-API)
-		* [URLS e seus métodos de requisições WEB RESTFull](#URLSeseusmetodosderequisicoesWEBRESTFull)
-   * [Problemas encontrados no projeto e soluções desenvolvidas](#problemas-encontrados-no-projeto-e-soluções-desenvolvidas)
-		* [1ª Etapa](#primeira-etapa)
-			*  [Problema 1:](#Problema1)
-			*  [Solução Problema 1:](#SolucaoProblema1)
-			*  [Problema 2:](#Problema2)
-			*  [Solução 2:](#Solucao2)
-		* [2ª Etapa](#segunda-etapa)
-			* [Problema:](#Problemas)
-			* [Solução:](#Solucao)
-				* [Estrutura do Projeto e comunicação das classes:](#EstruturadoProjetocomunicacaodasclasses)
-				* [Frameworks utilizados na aplicação Spring-boot WEB:](#FrameworksutilizadosnaaplicacaoSpringbootWEB)
-				* [Configuração do application.properties](#Configuracaodoapplicationproperties)
-				* [Como ficou as classes do projeto:](#Comoficouasclassesdoprojet)
-				* [Classes de testes unitários e integrados:](#Classesdetestesunitarioseintegrados)
 
-   * [Conclusão](#conclusao)
-<!--te-->
 
 # Intruções básicas de como executar o projeto validadordesenha<a name="intrucoes-basicas-de-como-executar-o-projeto-validadordesenha"></a>
 
