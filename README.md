@@ -447,8 +447,11 @@ O segundo foi que usar o método de requisição GET me gerou problemas nos test
 //		 passwordList.add("+bT(9!fhk");
 
 ````
->**_REGRA DO DESAFIO:_** Considere como especial os seguintes caracteres: !@#$%^&*()-+
+
 ##### Solução 2:<a name="Solucao2"></a>
+
+>**_REGRA DO DESAFIO:_** Considere como especial os seguintes caracteres: !@#$%^&*()-+
+
 Percebi que teria que mudar a forma como iria tratar esses dados, senão não iria atender a todos os casos de caracteres que estavam propostos no desafio. Então resolvi fazer um CRUD com POST,GET,DELETE,PUT, assim poderia passar uma String e não iria ter conflito de caracteres, e o método de validação da senha iria ficar como um serviço do POST(Create) e do PUT(Update), mas para isso iria precisar ter um repositório de dados.
 
 ### 2ª Etapa:<a name="segunda-etapa"></a>
