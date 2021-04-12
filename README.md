@@ -18,7 +18,6 @@ Tabela de conteúdos
 <!--te-->
 
 # Intruções básicas de como executar o projeto validadordesenha
-(#Sobre)
 
 ### Programas que precisam estar instalados para rodar o projeto:
 
