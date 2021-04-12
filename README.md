@@ -1,5 +1,9 @@
 # validadordesenha
-## Projeto validar senha (desafio)(Concluido)
+## Projeto validar senha it (desafio)(Concluido)
+
+**Author:** Rafael 
+
+**Data:** 10/04/2020
 
 Descrição do desafio:<a name="DescricaoDesafio"></a>
 
