@@ -1,5 +1,5 @@
 # validadordesenha
-## Projeto validar senha it (desafio)(Concluido)
+## Projeto validar senha iti (desafio)(Concluido)
 
 **Author:** Rafael 
 
@@ -512,6 +512,9 @@ spring.h2.console.path=/h2-console
 **Como ficou as classes do projeto:**<a name="Comoficouasclassesdoprojet"></a>
 
  - PasswordController -  responsável pelo controle logico da aplicação.
+ 
+ >**_NOTA_** - Classe está localizada src/main/java no package com.example.projetoitisenha.controller;
+ 
  ```java
  
 @RestController
@@ -614,6 +617,9 @@ public class PasswordController {
  ```
 
  - PasswordService – interface do serviço de validar senha.
+ 
+ >**_NOTA_** - Classe está localizada src/main/java no package com.example.projetoitisenha.service;
+ 
  ```Java
  public interface PasswordService {
 	Boolean isValid(String password);
@@ -621,6 +627,9 @@ public class PasswordController {
  ```
 
  - PasswordServiceImpl – implementa(firma contrato) com a PasswordService e realiza a logica da validação da senha conforme o desafio proposto.
+ 
+ >**_NOTA_** - Classe está localizada src/main/java no package com.example.projetoitisenha.service.impl;
+ 
 ```Java
 @Service
 public class PasswordServiceImpl implements PasswordService{
@@ -656,6 +665,9 @@ public class PasswordServiceImpl implements PasswordService{
 }
  ```
  - PasswordEntity -  Modelo do objeto para manipulação dos dados.
+
+ >**_NOTA_** - Classe está localizada src/main/java no package com.example.projetoitisenha.entity;
+
 ```Java
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
@@ -688,6 +700,9 @@ public class PasswordEntity {
 }
  ```
  - Password Repository -  interface que herda os recursos do spring JPA Repository para criação do banco de dados de acordo com sua entidade(PasswordEntity) .
+
+ >**_NOTA_** - Classe está localizada src/main/java no package com.example.projetoitisenha.repository;
+
 ```Java
 public interface PasswordRepository extends JpaRepository<PasswordEntity, Long> {
 
@@ -697,6 +712,9 @@ public interface PasswordRepository extends JpaRepository<PasswordEntity, Long> 
 **Classes de testes unitários e integrados:**<a name="Classesdetestesunitarioseintegrados"></a>
 
  - PasswordJavaApiUnitTests – Responsavél pelo testes unitários do projeto de acordo com as regras estabelecidas para o desafio.
+
+ >**_NOTA_** - Classe está localizada src/test/java no package com.example.projetoitisenha;
+
  ```Java
  
 @SpringBootTest (classes = {PasswordServiceImpl.class})
@@ -816,6 +834,9 @@ public class PasswordJavaApiUnitTests {
  ```
 
  - PasswordJavaApiIntegrationTest– Responsavél pelo testes integrados para validar as resquisições HTTP conforme as regras estabelecidas no projeto.
+
+ >**_NOTA_** - Classe está localizada src/it/java no package com.example.projetoitisenha;
+
 ```Java
 
 
