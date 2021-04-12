@@ -17,7 +17,8 @@ Tabela de conteúdos
    * [Tecnologias](#tecnologias)
 <!--te-->
 
-# Intruções básicas de como executar o projeto validadordesenha(#Sobre)
+# Intruções básicas de como executar o projeto validadordesenha
+(#Sobre)
 
 ### Programas que precisam estar instalados para rodar o projeto:
 
