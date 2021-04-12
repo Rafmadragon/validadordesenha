@@ -4,7 +4,7 @@ Projeto validar senha (desafio)
 Tabela de conteúdos
 =================
 <!--ts-->
-   * [Intruções básicas de como executar o projeto validadordesenha](#Intrucoes-basicas-de-como-executar-o-projeto-validadordesenha)
+   * [Intruções básicas de como executar o projeto validadordesenha](#intrucoes-basicas-de-como-executar-o-projeto-validadordesenha)
    * [Tabela de Conteudo](#tabela-de-conteudo)
    * [Instalação](#instalacao)
    * [Como usar](#como-usar)
