@@ -162,7 +162,9 @@ private static final String REGEX = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@#!%
 ##### Problema 2:
 O segundo foi que usar o método de requisição GET me gerou problemas nos testes integrados pois alguns testes que adicionei para validar todos os cenários possíveis estavam dando bad request e algumas senhas validas estavam retornando como senha não validas, fui pesquisar e li que tem alguns tipos de caracteres que são considerados como caracteres irregulares ou caracteres de operações logicas dentro da URL e Uri.
 
->**_Nota_** Padrões de URL e Uri consultados para requisições GET:  rfc-3986, rfc 11738(Urls)e rfc-2396(Uris).
+>**_Nota_** Padrões de URL e Uri consultados para requisições GET:  rfc-3986, rfc 11738(Urls)e rfc-2396(Uris)
+
+>**_REGRA_** Considere como especial os seguintes caracteres: !@#$%^&*()-+
 ```
 // casos de sucesso comentados que geram problemas na uri e url no request por GET passando o valor na URL 
 
@@ -813,5 +815,5 @@ public class PasswordJavaApiIntegrationTest {
 	
 }
  ```
-
-
+# Conclusão
+* Foi um desafio interessante criar uma aplicação que exponha uma API WEB para validar uma senha em 7 dias com os padrões e os requisitos solicitados.
