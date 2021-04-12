@@ -418,7 +418,7 @@ O segundo foi que usar o método de requisição GET me gerou problemas nos test
 
 >**_Nota_** Padrões de URL e Uri consultados para requisições GET:  [rfc-3986](https://tools.ietf.org/html/rfc3986), [rfc 1738(Urls)](https://tools.ietf.org/html/rfc1738) e [rfc-2396(Uris)](https://tools.ietf.org/html/rfc2396)
 
->**_REGRA_** Considere como especial os seguintes caracteres: !@#$%^&*()-+
+>**_REGRA DO DESAFIO:_** Considere como especial os seguintes caracteres: !@#$%^&*()-+
 ```
 // casos de sucesso comentados que geram problemas na uri e url no request por GET passando o valor na URL 
 
@@ -447,7 +447,7 @@ O segundo foi que usar o método de requisição GET me gerou problemas nos test
 //		 passwordList.add("+bT(9!fhk");
 
 ````
-
+>**_REGRA DO DESAFIO:_** Considere como especial os seguintes caracteres: !@#$%^&*()-+
 ##### Solução 2:<a name="Solucao2"></a>
 Percebi que teria que mudar a forma como iria tratar esses dados, senão não iria atender a todos os casos de caracteres que estavam propostos no desafio. Então resolvi fazer um CRUD com POST,GET,DELETE,PUT, assim poderia passar uma String e não iria ter conflito de caracteres, e o método de validação da senha iria ficar como um serviço do POST(Create) e do PUT(Update), mas para isso iria precisar ter um repositório de dados.
 
