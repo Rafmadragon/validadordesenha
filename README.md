@@ -77,6 +77,8 @@ Indíce
 <!--ts-->
    * [Descrição do desafio:](#DescricaoDesafio)
    * [Intruções básicas de como executar o projeto validadordesenha](#intrucoes-basicas-de-como-executar-o-projeto-validadordesenha)
+   		* [Programas que precisam estar instalados para rodar o projeto:](#Programasqueprecisamestarinstaladospararodaroprojeto)
+   		* [Baixar Projeto validadordesenha no git:](#BaixarProjetovalidadordesenhanogit)
    		* [Executar Projeto Spring-boot](#ExecutarProjetoSpringboot)
 			* [Iniciar aplicação WEB:](#IniciaraplicacaoWEB)
 			* [Liberar porta 8585:](#Liberarporta8585)
