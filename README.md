@@ -7,8 +7,8 @@ Indíce
    * [Intruções básicas de como executar o projeto validadordesenha](#intrucoes-basicas-de-como-executar-o-projeto-validadordesenha)
    * [Execução via postman e status de retornos da API](#execucao-via-postman-e-status-de-retornos-da-API)
    * [Problemas encontrados no projeto e soluções desenvolvidas](#problemas-encontrados-no-projeto-e-soluções-desenvolvidas)
-   	* [1ª Etapa](#primeira-etapa)
-   	* [2ª Etapa](#segunda-etapa)
+		* [1ª Etapa](#primeira-etapa)
+		* [2ª Etapa](#segunda-etapa)
    * [Conclusão](#conclusao)
 <!--te-->
 
