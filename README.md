@@ -8,6 +8,7 @@ Indíce
    * [Execução via postman e status de retornos da API](#execucao-via-postman-e-status-de-retornos-da-API)
    * [Problemas encontrados no projeto e soluções desenvolvidas](#problemas-encontrados-no-projeto-e-soluções-desenvolvidas)
    	* [1ª Etapa](#primeira-etapa)
+   	* [2ª Etapa](#segunda-etapa)
    * [Conclusão](#conclusao)
 <!--te-->
 
@@ -384,7 +385,7 @@ O segundo foi que usar o método de requisição GET me gerou problemas nos test
 ##### Solução 2:
 Percebi que teria que mudar a forma como iria tratar esses dados, senão não iria atender a todos os casos de caracteres que estavam propostos no desafio. Então resolvi fazer um CRUD com POST,GET,DELETE,PUT, assim poderia passar uma String e não iria ter conflito de caracteres, e o método de validação da senha iria ficar como um serviço do POST(Create) e do PUT(Update), mas para isso iria precisar ter um repositório de dados.
 
-### 2ª Etapa:
+### 2ª Etapa:<a name="segunda-etapa"></a>
 
 #### Problemas encontrados nessa parte:
 
