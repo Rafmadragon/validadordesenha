@@ -154,9 +154,11 @@ No arquivo **application.properties** está à configuração da porta do servid
 
 ### Finalizar projeto spring-boot no terminal:<a name="Finalizarprojetospringbootnoterminal"></a>
 Para finalizar esse processo depois que realizou os testes nas Urls , clique em cima do prompt de comando e aperte o comando:
+Windows:
 ```
 ctrl+c
 ```
+>**_IMPORTANTE_** Git bash ou Mac e só fechar o terminal e seguir o procedimento de Liberar porta 8585: que está acima.
 
 >**_NOTA_**  -Esse comando irá finalizar o spring – boot e a aplicação será encerrada.
 
