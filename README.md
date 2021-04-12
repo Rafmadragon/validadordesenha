@@ -105,7 +105,7 @@ Indíce
 
 # Intruções básicas de como executar o projeto validadordesenha<a name="intrucoes-basicas-de-como-executar-o-projeto-validadordesenha"></a>
 
-### Programas que precisam estar instalados para rodar o projeto:
+### Programas que precisam estar instalados para rodar o projeto:<a name="Programasqueprecisamestarinstaladospararodaroprojeto"></a>
 
 - Maven
 
@@ -125,7 +125,7 @@ $  mvn -version
 
 Verificar a versão do JAVA se e 11 ou superior.
 
-### Baixar Projeto validadordesenha no git:
+### Baixar Projeto validadordesenha no git:<a name="BaixarProjetovalidadordesenhanogit"></a>
 
 Baixar o projeto do git pelo terminal (prompt de comando) na pasta que deseja salva-lo
 
@@ -149,10 +149,10 @@ $ ls
 ```
 > **_NOTA_**  -Ele irá listar todos os arquivos não ocultos do projeto, verifique se o pom.xml está nessa pasta.
 
-## Executar Projeto Spring-boot
+## Executar Projeto Spring-boot<a name="ExecutarProjetoSpringboot"></a>
 > **_NOTA_**  -Para executar o projeto valdiadordesenha, entre na pasta que esteja com o pom.xml.
 
-### Iniciar aplicação WEB:
+### Iniciar aplicação WEB:<a name="IniciaraplicacaoWEB"></a>
 Comando para executar projeto inteiro do spring boot, para acessar a API web que ira validar a senha conforme os requisitos do desafio.
 ```
 $ mvn spring-boot:run
@@ -161,7 +161,7 @@ $ mvn spring-boot:run
 
 > **_ALERTA_**  -Caso apareça uma mensagem informando que a porta 8585 está sendo usada siga as seguintes etapas a seguir e execute o comando de inicialização do spring novamente.
 
-### Liberar porta 8585:
+### Liberar porta 8585:<a name="Liberarporta8585"></a>
 Consultar portas que estão sendo utilizadas.
 ```
 $ netstat -a -n –o
@@ -179,7 +179,7 @@ $ taskkill -f -im  NumeroDoPID
  ou
 No arquivo **application.properties** está à configuração da porta do servidor e só trocar para outra porta caso essa não esteja funcionando.
 
-### Finalizar projeto spring-boot no terminal:
+### Finalizar projeto spring-boot no terminal:<a name="Finalizarprojetospringbootnoterminal"></a>
 Para finalizar esse processo depois que realizou os testes nas Urls , clique em cima do prompt de comando e aperte o comando:
 ```
 ctrl+c
@@ -208,7 +208,7 @@ $ mvn test
 	- Aplicação do spring-boot iniciado conforme o manual de inicialização do projeto.
 
 
-## URLS e seus métodos de requisições WEB RESTFull
+## URLS e seus métodos de requisições WEB RESTFull<a name="URLSeseusmetodosderequisicoesWEBRESTFull"></a>
 >**_OBSERVAÇÃO_** Valida senha conforme digitado(esses dois métodos não recomendo pois dessa forma só validam alguns casos de senha da api,
 os que estão no corpo do desafio passaram normal, mas quando insere outros caracteres especiais  podem falhar ou dar Bad request, informações validadas na  rfc-3986 e rfc-11738(URLs) e rfc-2396(URIs))
 
@@ -391,7 +391,7 @@ GET - http://localhost:8585/validationPassword/password
 A primeira era simples só construir uma api que recebe uma String e retorna um boolean, estava fazendo pelo método de requisição GET.
 
 #### Problemas encontrados nessa parte:
-##### Problema 1:
+##### Problema 1:<a name="Problema1"></a>
 O Primeiro problema foi que não consegui validar dados duplicados utilizando expressões regulares e patters, no caso o codigo estava assim:
 ```JAVA
 private static final String REGEX = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@#!%^&*)(+-])(?=.*[0-9a-zA-Z])[0-9a-zA-Z$@#!%^&*)(+-]{9,}$";
@@ -405,7 +405,7 @@ public Boolean isValid(String password) {
 		return false;
 	}
 ```
-##### Solução Problema 1:
+##### Solução Problema 1:<a name="SolucaoProblema1"></a>
 Solução para esse problema foi resolver isso com esquema de comparações de vetores, comparando letra por letra, gostaria de ter feito com expressão regulares mas iria gastar um tempinho para pesquisar, então fiz uma comparação de letras usando a logica de programação que iria ter o mesmo resultado, no caso o codigo ficou assim:
 
 ```Java
@@ -438,7 +438,7 @@ private static final String REGEX = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@#!%
 	}
 
 ```
-##### Problema 2:
+##### Problema 2:<a name="Problema2"></a>
 O segundo foi que usar o método de requisição GET me gerou problemas nos testes integrados pois alguns testes que adicionei para validar todos os cenários possíveis estavam dando bad request e algumas senhas validas estavam retornando como senha não validas, fui pesquisar e li que tem alguns tipos de caracteres que são considerados como caracteres irregulares ou caracteres de operações logicas dentro da URL e Uri.
 
 >**_Nota_** Padrões de URL e Uri consultados para requisições GET:  rfc-3986, rfc 11738(Urls)e rfc-2396(Uris)
@@ -473,18 +473,18 @@ O segundo foi que usar o método de requisição GET me gerou problemas nos test
 
 ````
 
-##### Solução 2:
+##### Solução 2:<a name="Solucao2"></a>
 Percebi que teria que mudar a forma como iria tratar esses dados, senão não iria atender a todos os casos de caracteres que estavam propostos no desafio. Então resolvi fazer um CRUD com POST,GET,DELETE,PUT, assim poderia passar uma String e não iria ter conflito de caracteres, e o método de validação da senha iria ficar como um serviço do POST(Create) e do PUT(Update), mas para isso iria precisar ter um repositório de dados.
 
 ### 2ª Etapa:<a name="segunda-etapa"></a>
 
 #### Problemas encontrados nessa parte:
 
-##### Problema:
+##### Problema:<a name="Problema"></a>
 Construir esse CRUD da forma correta, com Desing de API, SOLID, Arquitetura Limpa e os testes unitários e integrados em 3 dias no meu tempo livre.
 >**_Nota_** Estava no final do 2º dia e só faltavam 5 dias e ainda tinha que escrever o Readme.md.
 
-##### Solução:
+##### Solução:<a name="Solucao"></a>
 A comunicação entre as classe  e suas estruturas ficaria da seguinte forma:
 
 >**_Nota_** Consulta de técnicas descritas por Robert C. Martin, em seu livro Clean Arquiteture.
@@ -495,7 +495,7 @@ Utilizei o conceito de package by component, aonde a visão está centrada nos s
 
 A camada de serviço fica como uma interface que gera padrões de senhas e quem firmar um contrato com essa classe deve implementa-lo no seu serviço de senhas, e com isso todas as camadas são independentes, gerando assim uma fácil manutenção no código e segurança na api.
 
-**Estrutura do Projeto e comunicação das classes:**
+**Estrutura do Projeto e comunicação das classes:**<a name="EstruturadoProjetocomunicacaodasclasses"></a>
 
  - User -> PasswordController
 
@@ -507,7 +507,7 @@ A camada de serviço fica como uma interface que gera padrões de senhas e quem 
 
  - PasswordController-> PasswordService (Interface) -> PasswordEntity(model)
 
-**Frameworks utilizados na aplicação Spring-boot WEB:**
+**Frameworks utilizados na aplicação Spring-boot WEB:**<a name="FrameworksutilizadosnaaplicacaoSpringbootWEB"></a>
 
  - Spring- boot Test.
 
@@ -519,7 +519,7 @@ A camada de serviço fica como uma interface que gera padrões de senhas e quem 
 
  - Spring MockMvc – para fazer as requisições HTTP na classe de testes Integrados.
  
- **Configuração do application.properties**
+ **Configuração do application.properties**<a name="Configuracaodoapplicationproperties"></a>
 ````
 server.port=8585
 #datasource
@@ -534,7 +534,7 @@ spring.jpa.hibernate.ddl-auto=update
 spring.h2.console.enabled=true
 spring.h2.console.path=/h2-console
 ````
-**Como ficou as classes do projeto:** 
+**Como ficou as classes do projeto:**<a name="Comoficouasclassesdoprojet"></a>
 
  - PasswordController -  responsável pelo controle logico da aplicação.
  ```java
@@ -719,7 +719,7 @@ public interface PasswordRepository extends JpaRepository<PasswordEntity, Long> 
 }
  ```
 
-**Classes de testes unitários e integrados:**
+**Classes de testes unitários e integrados:**<a name="Classesdetestesunitarioseintegrados"></a>
 
  - PasswordJavaApiUnitTests – Responsavél pelo testes unitários do projeto de acordo com as regras estabelecidas para o desafio.
  ```Java
