@@ -244,7 +244,7 @@ Response false -  usuário não consegue cadastrar a senha pois ela não está d
 ````
 {
     "id": 1,
-    "password": "&9w#i!FokR",
+    "password": "&9w#i!FokRR",
     "validPassword": false
 }
 ````
@@ -287,7 +287,7 @@ Response false -  usuário não consegue atualizar a senha pois ela não está d
 ````
 {
     "id": 1,
-    "password": "&9w#i!FokR",
+    "password": "&9w#i!FokRR",
     "validPassword": false
 }
 ````
