@@ -163,6 +163,34 @@ private static final String REGEX = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@#!%
 O segundo foi que usar o método de requisição GET me gerou problemas nos testes integrados pois alguns testes que adicionei para validar todos os cenários possíveis estavam dando bad request e algumas senhas validas estavam retornando como senha não validas, fui pesquisar e li que tem alguns tipos de caracteres que são considerados como caracteres irregulares ou caracteres de operações logicas dentro da URL e Uri.
 
 >**_Nota_** Padrões de URL e Uri consultados para requisições GET:  rfc-3986, rfc 11738(Urls)e rfc-2396(Uris).
+```
+// casos de sucesso comentados que geram problemas na uri e url no request por GET passando o valor na URL 
+
+	 
+//caracteres inrregulares de URI ou operadores de URL -  %^# - Bad request consultar rfc-3986 e rfc-11738(URLs) e rfc-2396(URIs)
+//# - no começo da frase e irregular e no meio e espaço em branco e no final da frase é irregular 
+//		 passwordList.add("#3wE9!fhk");
+//		 passwordList.add("AbT*9!fo%");
+//		 passwordList.add("AbT^9!zok");
+//		 passwordList.add("%3wE9!fhk");
+//		 passwordList.add("AbT#9!fZk");
+		 
+
+// casos de sucesso comentados que geram problemas na uri e url	no request por GET passando a senha por parametro para URL 
+//caracteres inrregulares de URI ou operadores de URL -  %^#&+ - Bad request
+// + - considerado como operador logico - URI não reconhece como caracter
+//# e & -considerado com espaço em branco não reconhece como caracter
+		 
+//		 passwordList.add("#3wE9!fhk");
+//		 passwordList.add("AbT*9!fo%");
+//		 passwordList.add("AbT^9!zok");
+//		 passwordList.add("%3wE9!fhk");
+//		 passwordList.add("AbT#9!fZk");	
+//		 passwordList.add("&3wE9!fhk");
+//		 passwordList.add("+3wE9!fhk");	 
+//		 passwordList.add("+bT(9!fhk");
+
+````
 
 ##### Solução 2:
 Percebi que teria que mudar a forma como iria tratar esses dados, senão não iria atender a todos os casos de caracteres que estavam propostos no desafio. Então resolvi fazer um CRUD com POST,GET,DELETE,PUT, assim poderia passar uma String e não iria ter conflito de caracteres, e o método de validação da senha iria ficar como um serviço do POST(Create) e do PUT(Update), mas para isso iria precisar ter um repositório de dados.
@@ -209,7 +237,22 @@ A camada de serviço fica como uma interface que gera padrões de senhas e quem 
  - H2 – data base (banco de dados criado na memoria volátil, escolhi esse banco de dados pois não sabia aonde o projeto seria executado, ele precisa de menos permições do que se fosse um banco de dados MySQL-Server ou PostgreSQL-server.
 
  - Spring MockMvc – para fazer as requisições HTTP na classe de testes Integrados.
-
+ 
+ **Configuração do application.properties**
+````
+server.port=8585
+#datasource
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.url=jdbc:h2:mem:password-form
+spring.datasource.username=sa
+spring.datasource.password=
+#jpa
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.hibernate.ddl-auto=update
+#h2
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
+````
 **Como ficou as classes do projeto:** 
 
  - PasswordController -  responsável pelo controle logico da aplicação.
@@ -770,21 +813,5 @@ public class PasswordJavaApiIntegrationTest {
 	
 }
  ```
-
-**Configuração do application.properties**
-````
-server.port=8585
-#datasource
-spring.datasource.driverClassName=org.h2.Driver
-spring.datasource.url=jdbc:h2:mem:password-form
-spring.datasource.username=sa
-spring.datasource.password=
-#jpa
-spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
-spring.jpa.hibernate.ddl-auto=update
-#h2
-spring.h2.console.enabled=true
-spring.h2.console.path=/h2-console
-````
 
 
